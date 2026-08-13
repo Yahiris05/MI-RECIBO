@@ -50,3 +50,13 @@ dist/
 
 # Environment secrets
 .env
+
+# Figma & Web Simulator
+figma_design_prototype.html
+index.html
+css/
+js/
+package.json
+package-lock.json
+check_trigger.js
+GUIA_PRESENTACION.md

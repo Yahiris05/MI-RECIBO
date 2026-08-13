@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi recibo - Comprobantes y Facturas</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+  <!-- Core Mobile Application Wrapper Container -->
+  <div id="app-container">
+    
+    <!-- Permanent Phone Status Bar (Emulated UI) -->
+    <div class="phone-status-bar" id="app-status-bar">
+      <div class="status-time">9:41</div>
+      <div class="status-bar-icons">
+        <!-- Cellular Signal Icon -->
+        <svg width="13" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 20h20M2 20v-4M7 20v-8M12 20V8M17 20V4"/></svg>
+        <!-- Wifi Icon -->
+        <svg width="13" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.1a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+        <!-- Battery Icon -->
+        <svg width="16" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="16" height="10" rx="2" ry="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: SPLASH ONBOARDING -->
+    <div class="app-screen active no-nav" id="screen-splash">
+      <div class="splash-top">
+        <div class="splash-logo-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="10" y1="9" x2="8" y2="9"/>
+          </svg>
+        </div>
+        <h1 class="splash-title">Mi recibo</h1>
+        <p class="splash-subtitle">Tus comprobantes, organizados y siempre disponibles.</p>
+      </div>
+
+      <!-- Feature Checklist -->
+      <div class="splash-features">
+        <div class="splash-feature-item">
+          <div class="splash-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <span class="splash-feature-text">Escanea y guarda tus facturas</span>
+        </div>
+        <div class="splash-feature-item">
+          <div class="splash-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <span class="splash-feature-text">Recibe recordatorios importantes</span>
+        </div>
+        <div class="splash-feature-item">
+          <div class="splash-feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="splash-feature-text">Seguridad y respaldo en la nube</span>
+        </div>
+      </div>
+
+      <!-- Footer Buttons and Waves background -->
+      <div class="splash-bottom">
+        <button class="splash-btn" id="splash-btn">Comenzar</button>
+        <div class="waves-container">
+          <svg class="waves-svg" viewBox="0 0 375 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 60 C 100 10, 250 110, 375 50 L 375 160 L 0 160 Z" fill="var(--accent-orange)"/>
+            <path d="M0 90 C 120 50, 220 130, 375 80 L 375 160 L 0 160 Z" fill="var(--primary-navy)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: LOGIN -->
+    <div class="app-screen no-nav" id="screen-login">
+      <div class="login-top">
+        <div class="login-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+          </svg>
+        </div>
+        <h2 class="login-title">Mi recibo</h2>
+        <p class="login-subtitle">Bienvenido de nuevo</p>
+      </div>
+
+      <div class="login-form-wrap">
+        <form id="login-form">
+          <div class="form-group">
+            <label class="form-label">Correo empresarial</label>
+            <div class="input-container">
+              <span class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <input type="email" id="login-email" class="input-field" placeholder="empresa@ejemplo.com" required value="empresa@ejemplo.com">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label">Contraseña</label>
+            <div class="input-container">
+              <span class="input-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </span>
+              <input type="password" id="login-password" class="input-field" placeholder="••••••••" required value="contrasena123">
+              <button type="button" class="password-toggle" id="pwd-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-options">
+            <label class="checkbox-wrap">
+              <input type="checkbox" checked style="accent-color: var(--primary-navy)">
+              <span>Recordarme</span>
+            </label>
+            <a href="#" class="forgot-password-link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Iniciar sesión</button>
+        </form>
+      </div>
+
+      <!-- Waves at bottom of login -->
+      <div class="login-bottom-waves">
+        <div class="register-prompt">
+          ¿Aún no tienes cuenta? <span id="register-trigger">Regístrate</span>
+        </div>
+        <div class="waves-container">
+          <svg class="waves-svg" viewBox="0 0 375 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0 60 C 100 10, 250 110, 375 50 L 375 160 L 0 160 Z" fill="var(--accent-orange)"/>
+            <path d="M0 90 C 120 50, 220 130, 375 80 L 375 160 L 0 160 Z" fill="var(--primary-navy)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: DASHBOARD / HOME -->
+    <div class="app-screen" id="screen-dashboard">
+      <div class="dashboard-header-bg">
+        <div class="dashboard-bar">
+          <button class="hamburguer-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <button class="bell-btn" onclick="navigateTo('reminders')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div class="bell-badge" id="dash-bell-badge">3</div>
+          </button>
+        </div>
+        <div class="dashboard-welcome">
+          <h2 id="dash-welcome-name">¡Hola, Empresa!</h2>
+          <p>Aquí tienes un resumen de tu negocio</p>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card" onclick="navigateTo('documents')">
+          <span class="stat-title">Documentos<br>almacenados</span>
+          <div class="stat-val-row">
+            <span class="stat-value" id="stat-docs-count">128</span>
+            <div class="stat-icon blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card" onclick="navigateTo('reminders')">
+          <span class="stat-title">Recordatorios<br>pendientes</span>
+          <div class="stat-val-row">
+            <span class="stat-value" id="stat-reminders-count">5</span>
+            <div class="stat-icon orange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card" onclick="navigateTo('documents')">
+          <span class="stat-title">Facturas de<br>este mes</span>
+          <div class="stat-val-row">
+            <span class="stat-value" id="stat-invoices-count">18</span>
+            <div class="stat-icon green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-title">Categorías<br>registradas</span>
+          <div class="stat-val-row">
+            <span class="stat-value" id="stat-categories-count">7</span>
+            <div class="stat-icon folder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Reminder -->
+      <div class="upcoming-reminder-wrap">
+        <div class="section-label-row">
+          <span class="section-label">Próximo recordatorio</span>
+        </div>
+        <div id="upcoming-reminder-container">
+          <!-- Dynamic -->
+        </div>
+      </div>
+
+      <!-- Recent Documents -->
+      <div class="recent-docs-wrap" style="padding-bottom: 20px;">
+        <div class="section-label-row">
+          <span class="section-label">Documentos recientes</span>
+          <span class="section-link" onclick="navigateTo('documents')">Ver todos</span>
+        </div>
+        <div id="recent-docs-list">
+          <!-- Dynamic -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: CAMERA SCANNER -->
+    <div class="app-screen no-nav" id="screen-scanner">
+      <div class="scanner-header">
+        <button id="scanner-close-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <span style="font-size: 0.85rem; font-weight:600; font-family: var(--font-title);">Escanear documento</span>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </button>
+      </div>
+
+      <!-- Simulator viewfinder -->
+      <div class="camera-viewport">
+        <div class="camera-guide-box">
+          <div class="camera-guide-corners"></div>
+          <div class="laser-scanner-line" id="laser-scanner"></div>
+          
+          <div class="scanned-receipt-mock">
+            <div class="receipt-title">OFFICE DEPOT</div>
+            <div style="text-align: center; font-size: 0.45rem; margin-top: 1px; color: #555;">-- FACTURA --</div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-row">
+              <span>Fecha: 07/05/2024</span>
+              <span>10:30 a.m.</span>
+            </div>
+            <div class="receipt-row">
+              <span>Factura No:</span>
+              <span>000123456</span>
+            </div>
+            <div class="receipt-row">
+              <span>RNC:</span>
+              <span>1-01-12345-6</span>
+            </div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-row" style="font-weight: bold;">
+              <span>Descripción</span>
+              <span>Cant.</span>
+              <span>Total</span>
+            </div>
+            <div class="receipt-row">
+              <span>Resma de papel</span>
+              <span>1</span>
+              <span>$250.00</span>
+            </div>
+            <div class="receipt-row">
+              <span>Toner HP 85A</span>
+              <span>1</span>
+              <span>$4,500.00</span>
+            </div>
+            <div class="receipt-row">
+              <span>Carpeta archivo</span>
+              <span>2</span>
+              <span>$170.00</span>
+            </div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-row" style="font-weight: bold;">
+              <span>Total</span>
+              <span>$4,920.00</span>
+            </div>
+            <div class="receipt-divider"></div>
+            <div style="text-align: center; margin-top: 5px; font-size: 0.45rem; color: #666;">¡Gracias por su compra!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="scanner-controls">
+        <div style="font-size: 0.72rem; color: rgba(255,255,255,0.7); text-align: center; max-width: 250px;">
+          Alinea el documento en el recuadro para escanear
+        </div>
+        <div class="scan-action-row">
+          <button class="gallery-trigger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </button>
+          
+          <div class="capture-btn-outer" id="scanner-capture-trigger">
+            <div class="capture-btn-inner"></div>
+          </div>
+          
+          <button class="close-trigger" onclick="navigateTo('dashboard')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="scanner-modes">
+          <span class="scanner-mode-item">Galería</span>
+          <span class="scanner-mode-item active">Foto</span>
+          <span class="scanner-mode-item">Archivo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 5: ADD DOCUMENT -->
+    <div class="app-screen no-nav" id="screen-add-document">
+      <div class="app-header">
+        <button class="app-header-back" data-back-screen="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="app-header-title">Agregar documento</div>
+        <div style="width: 32px;"></div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="upload-tabs">
+        <div class="upload-tab-btn" onclick="navigateTo('scanner')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>Tomar foto</span>
+        </div>
+        <div class="upload-tab-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>Subir archivo</span>
+        </div>
+      </div>
+
+      <!-- Form structure -->
+      <form id="add-document-form">
+        <div class="add-form-card">
+          <div class="form-title-group">Información del documento</div>
+          
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Proveedor</label>
+            <input type="text" id="form-proveedor" class="input-field" style="padding-left: 14px;" placeholder="Ej. Office Depot" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Tipo de documento</label>
+            <select id="form-tipo" class="input-select">
+              <option value="Factura">Factura</option>
+              <option value="Recibo">Recibo</option>
+              <option value="Comprobante">Comprobante</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Fecha del documento</label>
+            <input type="date" id="form-fecha" class="input-field" style="padding-left: 14px;" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Monto (RD$)</label>
+            <input type="number" id="form-monto" step="0.01" class="input-field" style="padding-left: 14px;" placeholder="0.00" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Categoría</label>
+            <select id="form-categoria" class="input-select">
+              <option value="Útiles de oficina">Útiles de oficina</option>
+              <option value="Servicios públicos">Servicios públicos</option>
+              <option value="Telecomunicaciones">Telecomunicaciones</option>
+              <option value="Mantenimiento">Mantenimiento</option>
+              <option value="Tecnología">Tecnología</option>
+              <option value="Seguros">Seguros</option>
+              <option value="Alquiler">Alquiler</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Notas (opcional)</label>
+            <textarea id="form-notas" class="input-field" style="padding-left: 14px; height: 70px; resize: none;" placeholder="Ej. Compra de suministros"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="form-submit-btn">Guardar documento</button>
+      </form>
+    </div>
+
+    <!-- SCREEN 6: LIST OF DOCUMENTS -->
+    <div class="app-screen" id="screen-documents">
+      <div class="app-header">
+        <button class="app-header-back" data-back-screen="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="app-header-title">Mis documentos</div>
+        <div style="width: 32px;"></div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrapper">
+        <div class="search-input-box">
+          <span class="search-lens">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          <input type="text" id="doc-search-input" class="search-field" placeholder="Buscar documento...">
+          <span class="search-filter-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Filter pills -->
+      <div class="filter-tags-scroll">
+        <div class="filter-tag active" data-filter="Todos">Todos</div>
+        <div class="filter-tag" data-filter="Facturas">Facturas</div>
+        <div class="filter-tag" data-filter="Recibos">Recibos</div>
+        <div class="filter-tag" data-filter="Comprobantes">Comprobantes</div>
+      </div>
+
+      <!-- Scroll wrapper -->
+      <div class="docs-list-scroll" id="docs-list-container">
+        <!-- Dynamic content loaded in app.js -->
+      </div>
+    </div>
+
+    <!-- SCREEN 7: REMINDERS -->
+    <div class="app-screen" id="screen-reminders">
+      <div class="app-header">
+        <button class="app-header-back" data-back-screen="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="app-header-title">Recordatorios</div>
+        <button id="add-reminder-btn" style="background: none; border: none; color: var(--text-dark); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px; border-radius: var(--radius-sm); transition: var(--transition-fast);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="reminders-tabs">
+        <button class="reminder-tab-btn active" data-tab="Próximos">Próximos</button>
+        <button class="reminder-tab-btn" data-tab="Calendario">Calendario</button>
+        <button class="reminder-tab-btn" data-tab="Completados">Completados</button>
+      </div>
+
+      <!-- Scroll container -->
+      <div class="reminders-list-scroll" id="reminders-list-container">
+        <!-- Dynamic content loaded in app.js -->
+      </div>
+    </div>
+
+    <!-- SCREEN 8: PROFILE / CONFIG -->
+    <div class="app-screen" id="screen-profile">
+      <div class="app-header">
+        <button class="app-header-back" data-back-screen="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="app-header-title">Perfil de la empresa</div>
+        <div style="width: 32px;"></div>
+      </div>
+
+      <!-- Profile summary card -->
+      <div class="profile-company-card">
+        <div class="profile-avatar-box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="16" x2="15" y2="22"/></svg>
+        </div>
+        <div class="profile-company-info">
+          <h3 id="profile-comp-name">Empresa S.R.L.</h3>
+          <p id="profile-comp-rnc">RNC: 1-01-12345-6</p>
+          <p id="profile-comp-email" style="opacity: 0.75;">empresa@ejemplo.com</p>
+          <p id="profile-comp-phone" style="opacity: 0.75;">809-123-4567</p>
+        </div>
+      </div>
+
+      <!-- Links menu list -->
+      <div class="profile-links-list">
+        <div class="profile-link-item">
+          <div class="profile-link-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>Información de la empresa</span>
+          </div>
+          <div class="profile-link-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item">
+          <div class="profile-link-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Usuarios y permisos</span>
+          </div>
+          <div class="profile-link-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item">
+          <div class="profile-link-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Categorías</span>
+          </div>
+          <div class="profile-link-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item">
+          <div class="profile-link-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Respaldo y seguridad</span>
+          </div>
+          <div class="profile-link-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item">
+          <div class="profile-link-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Configuración</span>
+          </div>
+          <div class="profile-link-chevron">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item" id="profile-reset-btn" style="border-bottom: 1px solid rgba(0,0,0,0.03);">
+          <div class="profile-link-left" style="color: var(--accent-orange);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Restablecer datos demo</span>
+          </div>
+          <div class="profile-link-chevron" style="color: var(--accent-orange);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="profile-link-item" id="profile-logout-btn">
+          <div class="profile-link-left logout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Cerrar sesión</span>
+          </div>
+          <div class="profile-link-chevron" style="color: hsl(0, 85%, 55%);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky bottom tab bar navigation (emulated UI) -->
+    <div class="bottom-nav" id="bottom-nav">
+      <button class="nav-item active" data-screen="dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Inicio</span>
+      </button>
+      <button class="nav-item" data-screen="documents">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        <span>Documentos</span>
+      </button>
+      <button class="nav-item-fab" id="nav-fab-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <button class="nav-item" data-screen="reminders">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span>Alertas</span>
+      </button>
+      <button class="nav-item" data-screen="profile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Perfil</span>
+      </button>
+    </div>
+
+    <!-- Modal View details -->
+    <div class="app-modal-overlay" id="app-modal">
+      <div class="app-modal-card" id="modal-content-container">
+        <!-- Dynamic details details -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Application Logic Modules -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
